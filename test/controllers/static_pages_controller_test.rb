@@ -6,11 +6,14 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     @base_title = "Ruby on Rails Tutorial Sample App"
   end
 
-  test "should get home" do
-    get root_path
-    assert_response :success
+  test "should get home" do#ホームページのテスト
+    get root_path #GetアクションをHomeアクションに対して発行(送信)せよ
+    assert_response :success#リクエストに対するレスポンスは[成功]になるはず
     assert_select "title", "Ruby on Rails Tutorial Sample App"
+    #home.html.erbのtitleというタグ<title>の中に
+    #Ruby on Rails Tutorial Sample Appがあるか
   end
+
 
   test "should get help" do
     get help_path
