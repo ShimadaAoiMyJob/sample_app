@@ -5,6 +5,8 @@ ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.10"
+#最先端のハッシュ関数．パスワードを適切にハッシュ化
+gem "bcrypt",  "3.1.18"
 #bootstrapのsassバージョン
 gem "bootstrap-sass","3.4.1"
 #sassをrailsで使えるようにする

@@ -10,3 +10,4 @@ class User
     "#{@name} <#{@email}>"
   end
 end
+

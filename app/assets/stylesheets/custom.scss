@@ -5,7 +5,8 @@ $gray-medium-light: #eaeaea;
 /* how to comment out*/
 
 body{
-    padding-top: 60px;
+    padding-top: 60px; //これをすることでいい感じの余白できる
+  
 }
 
 section {
@@ -51,7 +52,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 1.7em; //親要素の1.7倍
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
