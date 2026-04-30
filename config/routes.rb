@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get "help",to:'static_pages#help'
+  get "help",to:'static_pages#help' #url は/help static_pagesはコントローラ名.ほぼ内容が固定のページ用
   get "about",to:'static_pages#about' 
+  #/aboutにアクセスされたらstaticpagesコントローラのaboutアクションを実行
+  #これだけでabout_pathが作成される
   get "contact",to:'static_pages#contact'
   #これって,static_pages/aboutじゃないのはなんで? 
   #=> #はコントローラとアクションをつなぐ./はファイルの場所
@@ -11,4 +12,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :users
+
+  get "/login", to:"sessions#new"
+  post "/login", to:"sessions#create"
+  delete "/logout",to:"sessions#destroy"
 end
