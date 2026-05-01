@@ -6,11 +6,18 @@
     <div class = "col-md-6 col-md-offset-3">
         <%= form_with(url: login_path, scope: :session) do |f| %>
         <%#送信先urlがlogin_pathで, scopeはparams[:session][:email]とかにするために書いてる%>
+        <%#form_withは，ralisが用意してる入力欄のまとまりをつくるためのヘルパー%>
             <%= f.label :email%>
             <%= f.email_field :email,class: "form-control"%>
 
             <%= f.label :password%>
             <%= f.password_field :password, class: "form-control"%>
+
+            <%= f.label :remember_me, class: "checkbox inline" do %>
+                <%= f.check_box :remember_me %>
+                <%#scope: :sessionってやってるからsession[:remember_me] = 1とかがなりたてる%>
+                <span>Remember me on this computer</span>
+            <%end%>
 
             <%= f.submit "Log in", class: "btn btn-primary"%>
         <%end%>

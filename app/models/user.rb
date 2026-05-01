@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  before_save {email.downcase!}
+  attr_accessor :remember_token
+  before_save {email.downcase!} #self.email = email.downcase
   validates :name,presence:true,length:{maximum:50}
   VALID_EMAIL_REGEX =  /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email,presence:true,length:{maximum:255},
@@ -10,9 +11,39 @@ class User < ApplicationRecord
 
 
   #渡された文字列のハッシュ値を返す
-  def User.digest(string)
+  def self.digest(string) #このselfはuser
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST:
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string,cost:cost)
+  end
+
+  def self.new_token 
+    SecureRandom.urlsafe_base64
+  end
+
+  #永続的セッションのためにユーザーをデータベースに記憶する
+  def remember
+    self.remember_token = User.new_token #関数
+    #selfは今操作してる一人のユーザーオブジェクト
+    update_attribute(:remember_digest,User.digest(remember_token))
+    remember_digest#ユーザーごとの一意の値として使っていく
+  end
+
+  #セッションハイジャック防止のためにセッショントークンを返す
+  def session_token
+    remember_digest || remember
+  end
+
+
+  #渡されたトークンがダイジェストと一致したらtrueを返す
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    #DBのcolumnとかつかって判断してるからこれはmodelに書くよ
+  end
+
+  #ユーザーのログイン情報を破棄する
+  def forget
+    update_attribute(:remember_digest,nil)
   end
 end
