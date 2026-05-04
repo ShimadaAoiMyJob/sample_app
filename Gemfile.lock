@@ -88,6 +88,8 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    bootstrap-will_paginate (1.0.0)
+      will_paginate
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -108,6 +110,8 @@ GEM
     erb (6.0.3)
     erubi (1.13.1)
     execjs (2.10.1)
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.4-aarch64-linux-gnu)
     ffi (1.17.4-aarch64-linux-musl)
     ffi (1.17.4-arm-linux-gnu)
@@ -282,6 +286,7 @@ GEM
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.7.5)
@@ -303,8 +308,10 @@ DEPENDENCIES
   bcrypt (= 3.1.18)
   bootsnap
   bootstrap-sass (= 3.4.1)
+  bootstrap-will_paginate (= 1.0.0)
   capybara
   debug
+  faker (= 2.21.0)
   importmap-rails
   jbuilder
   minitest (~> 5.10)
@@ -319,6 +326,7 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   web-console
+  will_paginate (= 3.3.1)
 
 CHECKSUMS
   actioncable (7.0.10) sha256=7aa02ea26d6cc21c33e604bb28a0759c5212653311bc42105f96f709e507afab
@@ -341,6 +349,7 @@ CHECKSUMS
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
   bootsnap (1.23.0) sha256=c1254f458d58558b58be0f8eb8f6eec2821456785b7cdd1e16248e2020d3f214
   bootstrap-sass (3.4.1) sha256=ba4673535eb0a8334a39a258ea8d81904832f47607069d0a1735b0937645c7df
+  bootstrap-will_paginate (1.0.0) sha256=a6bdb4bf303357052f586bbc963ea352c2e30f596de3eb1459b953fb95f8c20c
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   capybara (3.40.0) sha256=42dba720578ea1ca65fd7a41d163dd368502c191804558f6e0f71b391054aeef
   concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
@@ -351,6 +360,7 @@ CHECKSUMS
   erb (6.0.3) sha256=e43685a8a0a0ea6a924871b2162e8953ef73147ce46b75b36d1f6774fd286e91
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   execjs (2.10.1) sha256=abe0ae028467eb8e30c10814eb934d07876a691aae7e803d813b7ce5a75e73f1
+  faker (2.21.0) sha256=176534cffc3ae4014d9bfc4c4897db3e607cfd37cd0bf7c8590df05ee355b408
   ffi (1.17.4-aarch64-linux-gnu) sha256=b208f06f91ffd8f5e1193da3cae3d2ccfc27fc36fba577baf698d26d91c080df
   ffi (1.17.4-aarch64-linux-musl) sha256=9286b7a615f2676245283aef0a0a3b475ae3aae2bb5448baace630bb77b91f39
   ffi (1.17.4-arm-linux-gnu) sha256=d6dbddf7cb77bf955411af5f187a65b8cd378cb003c15c05697f5feee1cb1564
@@ -431,6 +441,7 @@ CHECKSUMS
   websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
   websocket-driver (0.8.0) sha256=ed0dba4b943c22f17f9a734817e808bc84cdce6a7e22045f5315aa57676d4962
   websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
+  will_paginate (3.3.1) sha256=34e9a8b81037add0c32dafca6a43e7edf95c3ee14f782bb56f07826efbe4a71d
   xpath (3.2.0) sha256=6dfda79d91bb3b949b947ecc5919f042ef2f399b904013eb3ef6d20dd3a4082e
   zeitwerk (2.7.5) sha256=d8da92128c09ea6ec62c949011b00ed4a20242b255293dd66bf41545398f73dd
 

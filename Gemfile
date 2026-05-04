@@ -13,6 +13,11 @@ gem "bootstrap-sass","3.4.1"
 gem "sassc-rails","2.1.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
+#にせものユーザーをつくる
+gem "faker", "2.21.0"
+#ページネイト用gemfile
+gem "will_paginate",    "3.3.1"
+gem "bootstrap-will_paginate","1.0.0"
 
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"

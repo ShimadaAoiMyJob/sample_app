@@ -16,4 +16,17 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
   #   assert true
   # end
+  test "layout links when not logged in" do
+    get root_path
+    assert_select "a[href=?]",login_path
+    assert_select "a[href=?]",users_path,count:0
+  end
+
+  test "layout links when logged in" do
+    log_in_as(users(:michael))
+    get root_path
+    assert_select "a[href=?]",logout_path
+    assert_select "a[href=?]",users_path
+    assert_select "a[href=?]",user_path(users(:michael))
+  end
 end
