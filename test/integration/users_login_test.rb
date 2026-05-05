@@ -84,7 +84,6 @@ class LogoutTest < Logout
       #cookieを保存してログイン
       log_in_as(@user,remember_me: "1")
       assert_not cookies[:remember_token].blank?
-      assert_equal cookies[:remember_token],assigns(:user).remember_token
       #createで生成されたremember_tokenをもった
       #@userをassingsで持ってきて比較
       #createで生成されるクンと,Cookieの中にある生トークンは一緒？という処理

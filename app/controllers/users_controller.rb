@@ -10,12 +10,15 @@ class UsersController < ApplicationController
     redirect_to users_url, status: :see_other
   end
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page:params[:page])
+    #params[:page]はURLの中に入ってる
+    #/users?page = 2
   end
 
   def show
     @user = User.find(params[:id])
     #debugger書くと処理が一時止まる
+    redirect_to root_url,status: :see_other and return unless @user.activated?
   end
   def new
     @user = User.new
@@ -24,10 +27,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save#保存の成功
-      reset_session
-      log_in @user
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       render "new",status: :unprocessable_entity
       #render : この画面(ビュー)を表示する
