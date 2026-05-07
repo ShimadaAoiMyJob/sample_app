@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get "help",to:'static_pages#help' #url は/help static_pagesはコントローラ名.ほぼ内容が固定のページ用
   get "about",to:'static_pages#about' 
   #/aboutにアクセスされたらstaticpagesコントローラのaboutアクションを実行
@@ -18,4 +20,5 @@ Rails.application.routes.draw do
   delete "/logout",to:"sessions#destroy"
 
   resources :account_activations, only: [:edit]
+  resources :password_resets, only:[:new,:create,:edit,:update]
 end

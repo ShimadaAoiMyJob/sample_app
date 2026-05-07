@@ -1,0 +1,17 @@
+<% provide(:title,"Forgot password")%>
+<h1>Forgot password </h1>
+
+<div class= "row">
+    <div class= "col-md-6 col-md-offset-3">
+        <%= form_with(url: password_resets_path,scope: :password_reset) do |f|%>
+        <%#/password_resetsに対してcreate%>
+        <%#scope : params[:password_reset][:email]とかできるようになる%>
+        <%#今回対応するmodelがないのでscopeで名前決めてる%>
+        <%#modelがあると,自分でurl書かなくていい. ほぼ全部やってくれる%>
+            <%= f.label :email %>
+            <%= f.email_field :email, class: "form-control"%>
+
+            <%= f.submit "Submit",class: "btn-primary"%>
+        <%end%>
+    </div>
+</div>
