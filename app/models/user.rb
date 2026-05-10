@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token,:reset_token
   before_save :downcase_email
   #saveが呼ばれるたびに何回もやる
@@ -78,6 +79,14 @@ class User < ApplicationRecord
   def password_reset_expired?
     reset_sent_at < 2.hours.ago #2.hours.ago => 二時間前
     #よりもさらに前の時刻
+  end
+
+  def feed 
+    Micropost.where("user_id = ?",id )
+    #Micropostテーブルからuser_idがこのユーザー(id)と同じ投稿
+    #session[:user_id]=user.idで, current_userが橋渡ししてる
+    #user_idはMicropostDBのカラム名
+  
   end
 
   private

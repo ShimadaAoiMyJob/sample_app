@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #debugger書くと処理が一時止まる
     redirect_to root_url,status: :see_other and return unless @user.activated?
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   def new
     @user = User.new
@@ -57,14 +58,6 @@ class UsersController < ApplicationController
     end
 
     #beforeフィルタ
-    #ログイン済みユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in"
-        redirect_to login_url, status: :see_other
-      end
-    end
 
     #正しいユーザーかどうか確認
     def correct_user
